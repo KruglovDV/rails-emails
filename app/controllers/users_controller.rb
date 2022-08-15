@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     @user = User.find_by(confirmation_token: params[:confirmation_token])
 
     if @user && @user.may_activate?
-      @user.activate
+      @user.activate!
       redirect_to :root, notice: t('.activated')
     else
       redirect_to :root, notice: t('.activate_problems')
